@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'providers/product_provider.dart';
 import 'providers/cart_provider.dart';
-import 'screens/product_list_screen.dart';
+import 'pages/product_list_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,15 +31,14 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         builder: (context, child) {
-          // Menjaga tampilan selalu seukuran layar HP di Browser Chrome PC
           return Container(
-            color: const Color(0xFF2B2B2B), // Background gelap di luar mockup HP
+            color: const Color(0xFF2B2B2B),
             child: Center(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Container(
-                  width: 430, // Lebar standar HP (iPhone 14 / Android Large)
-                  height: 900, // Tinggi standar HP
+                  width: 430,
+                  height: 900,
                   decoration: const BoxDecoration(
                     color: Color(0xFFFAF7F2),
                     boxShadow: [
@@ -56,7 +55,7 @@ class MyApp extends StatelessWidget {
             ),
           );
         },
-        home: const ProductListScreen(),
+        home: const ProductListPage(),
       ),
     );
   }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../models/product.dart';
 import '../providers/cart_provider.dart';
 
-class CartScreen extends StatelessWidget {
-  const CartScreen({super.key});
+class CartPage extends StatelessWidget {
+  const CartPage({super.key});
 
   // Format angka Rupiah tanpa desimal
   String formatRupiah(num number) {
@@ -49,7 +50,8 @@ class CartScreen extends StatelessWidget {
                 // List Produk di Keranjang
                 Expanded(
                   child: ListView.builder(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 8),
                     itemCount: cart.items.length,
                     itemBuilder: (ctx, i) {
                       final item = cartItemsList[i];
@@ -131,7 +133,8 @@ class CartScreen extends StatelessWidget {
                                     child: Container(
                                       decoration: BoxDecoration(
                                         color: const Color(0xFFF3EDE7),
-                                        borderRadius: BorderRadius.circular(20),
+                                        borderRadius:
+                                            BorderRadius.circular(20),
                                       ),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.min,
@@ -161,10 +164,18 @@ class CartScreen extends StatelessWidget {
                                             padding: EdgeInsets.zero,
                                             constraints: const BoxConstraints(
                                                 minWidth: 32, minHeight: 32),
-                                            icon: const Icon(Icons.add, size: 16),
+                                            icon: const Icon(Icons.add,
+                                                size: 16),
                                             onPressed: () {
                                               cart.addItem(
-                                                item as dynamic,
+                                                Product(
+                                                  id: productId,
+                                                  name: item.name,
+                                                  price: item.price,
+                                                  imageUrl: item.imageUrl,
+                                                  description: '',
+                                                  category: '',
+                                                ),
                                               );
                                             },
                                           ),

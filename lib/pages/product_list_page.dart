@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/product_provider.dart';
 import '../providers/cart_provider.dart';
-import 'cart_screen.dart';
+import 'cart_page.dart';
 
-class ProductListScreen extends StatefulWidget {
-  const ProductListScreen({super.key});
+class ProductListPage extends StatefulWidget {
+  const ProductListPage({super.key});
 
   @override
-  State<ProductListScreen> createState() => _ProductListScreenState();
+  State<ProductListPage> createState() => _ProductListPageState();
 }
 
-class _ProductListScreenState extends State<ProductListScreen> {
+class _ProductListPageState extends State<ProductListPage> {
   String _selectedCategory = 'Semua';
   String _searchQuery = '';
   final TextEditingController _searchController = TextEditingController();
@@ -49,12 +49,12 @@ class _ProductListScreenState extends State<ProductListScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            // Header Atas (Sudut dibuat lurus/sejajar tanpa lengkungan)
+            // Header Atas
             Container(
               padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
               decoration: const BoxDecoration(
                 color: Color(0xFF6D4C41),
-                borderRadius: BorderRadius.zero, // Dibuat lurus sejajar
+                borderRadius: BorderRadius.zero,
               ),
               child: Column(
                 children: [
@@ -68,7 +68,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
                       ),
                       const Row(
                         children: [
-                          // Logo dibuat lebih besar (size: 30)
                           Icon(
                             Icons.bakery_dining,
                             color: Colors.white,
@@ -96,7 +95,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
                             onPressed: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                    builder: (ctx) => const CartScreen()),
+                                  builder: (ctx) => const CartPage(),
+                                ),
                               );
                             },
                           ),
