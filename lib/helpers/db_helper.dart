@@ -68,4 +68,15 @@ class DBHelper {
     final List<Map<String, dynamic>> maps = await db.query('local_cart');
     return List.generate(maps.length, (i) => CartItem.fromMap(maps[i]));
   }
+
+  // Menghapus 1 item dari tabel local_cart
+  static Future<void> deleteCartItem(String id) async {
+    final db = await DBHelper.database;
+    await db.delete('local_cart', where: 'id = ?', whereArgs: [id]);
+  }
+
+  static Future<void> clearCart() async {
+    final db = await DBHelper.database;
+    await db.delete('local_cart');
+  }
 }
